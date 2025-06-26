@@ -1,2 +1,18 @@
-/* empty css                      */(function(){const t=document.createElement("link").relList;if(t&&t.supports&&t.supports("modulepreload"))return;for(const e of document.querySelectorAll('link[rel="modulepreload"]'))i(e);new MutationObserver(e=>{for(const r of e)if(r.type==="childList")for(const o of r.addedNodes)o.tagName==="LINK"&&o.rel==="modulepreload"&&i(o)}).observe(document,{childList:!0,subtree:!0});function s(e){const r={};return e.integrity&&(r.integrity=e.integrity),e.referrerPolicy&&(r.referrerPolicy=e.referrerPolicy),e.crossOrigin==="use-credentials"?r.credentials="include":e.crossOrigin==="anonymous"?r.credentials="omit":r.credentials="same-origin",r}function i(e){if(e.ep)return;e.ep=!0;const r=s(e);fetch(e.href,r)}})();
+import{a as u,S as d,i}from"./assets/vendor-Dy2ZTtfi.js";(function(){const s=document.createElement("link").relList;if(s&&s.supports&&s.supports("modulepreload"))return;for(const r of document.querySelectorAll('link[rel="modulepreload"]'))a(r);new MutationObserver(r=>{for(const t of r)if(t.type==="childList")for(const n of t.addedNodes)n.tagName==="LINK"&&n.rel==="modulepreload"&&a(n)}).observe(document,{childList:!0,subtree:!0});function e(r){const t={};return r.integrity&&(t.integrity=r.integrity),r.referrerPolicy&&(t.referrerPolicy=r.referrerPolicy),r.crossOrigin==="use-credentials"?t.credentials="include":r.crossOrigin==="anonymous"?t.credentials="omit":t.credentials="same-origin",t}function a(r){if(r.ep)return;r.ep=!0;const t=e(r);fetch(r.href,t)}})();function f(o){const s="51053325-3e2bfd05922f90ae0c618f7f8",e=new URLSearchParams({key:s,q:o,image_type:"photo",orientation:"horizontal",safesearch:!0});return u(`https://pixabay.com/api/?${e}`).then(a=>a.data)}const c=document.querySelector(".gallery"),p=document.querySelector(".loader"),m=new d(".gallery a",{captionDelay:250,captionPosition:"bottom",captionsData:"alt"});function y(o){const s=o.map(e=>`
+        <li class="gallery-item">
+        <a class="gallery-link" href="${e.largeImageURL}">
+        <img
+        class="gallery-img"
+        src="${e.webformatURL}"
+        alt="${e.tags}"
+        width="360" />
+        </a>
+        <div class="descr">
+       <p class="descr-label">Likes <span class="descr-span">${e.likes}</span></p>
+       <p class="descr-label">Views <span class="descr-span">${e.views}</span></p>
+       <p class="descr-label">Comments <span class="descr-span">${e.comments}</span></p>
+       <p class="descr-label">Downloads <span class="descr-span">${e.downloads}</span></p>
+       </div>
+        </li>
+        `).join("");c.innerHTML=s,m.refresh()}function g(){c.innerHTML=""}function h(){p.style.display="block"}function L(){p.style.display="none"}const b=document.querySelector(".form"),l=document.querySelector("input");b.addEventListener("submit",w);function w(o){o.preventDefault();const s=l.value.toLowerCase().trim();s&&(g(),h(),f(s).then(e=>{e.hits.length>0?(y(e.hits),l.value=""):i.error({title:"Error",message:"Sorry, there are no images matching your search query. Please try again!",position:"topRight"})}).catch(e=>{i.error({title:"Error",message:"Something went wrong. Please, try again!",position:"topRight"})}).finally(()=>L()))}
 //# sourceMappingURL=index.js.map
